@@ -8,9 +8,8 @@ const methodOverride = require('method-override');
 // connect to the database with Mongoose
 require('./config/database');
 var indexRouter = require('./routes/index');
-var flightsRouter = require('./routes/flights');
-const destinationRouter = require('./routes/destinations')
-const ticketsRouter = require('./routes/tickets');
+var gundamRouter = require('./routes/gundam');
+const partsRouter = require('./routes/parts');
 
 var app = express();
 
@@ -26,9 +25,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/flights', flightsRouter);
-app.use('/', destinationRouter);
-app.use('/', ticketsRouter);
+app.use('/gundam', gundamRouter);
+app.use('/parts', partsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
