@@ -1,15 +1,17 @@
 const PartsModel = require('../models/parts');
+const GundamModel = require('../models/gundam');
 
 // Get
 function newPart(req, res) {
-  GundamModel.findById({}, function(err, gundams) {
+  GundamModel.find({}, function(err, gundams) {
     res.render(`parts/new`, { gundams, })
   })
 }
 // Post
 function create(req, res) {
-  PartsModel.create(req.body);
-  res.redirect('/parts/index')
+  PartsModel.create(req.body, function(err){
+    res.redirect('/parts')
+  });
 }
 
 // Get
@@ -19,9 +21,9 @@ function index(req, res) {
 
 // Get
 function get(req, res) {
-  PartModel.findById(req.params.id, function(err, parts) {
-    GundamModel.findById({}, function(err, gundams) {
-      res.render(`parts/show`, { gundams, parts })
+  PartsModel.findById(req.params.id, function(err, part) {
+    GundamModel.find({}, function(err, gundams) {
+      res.render(`parts/show`, { gundams, part })
     })})
 }
 // Put
@@ -32,7 +34,7 @@ function update(req, res) {
         console.log(err)
       }
       else {
-        res.redirect('/parts/index')
+        res.redirect('/parts')
       }
     })
 }

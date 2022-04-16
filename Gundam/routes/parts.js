@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const partsController = require('../controllers/parts');
 
-router.get('/index', partsController.index);
+router.get('/', partsController.index);
 router.get('/new', partsController.newPart);
 router.get('/:id', partsController.get);
 

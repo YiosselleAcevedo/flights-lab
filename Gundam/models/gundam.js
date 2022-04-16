@@ -5,7 +5,7 @@ const gundamSchema = new Schema({
   name: {
     type: String
   },
-  grades: {
+  grade: {
     type: String,
     enum: ['Standard', 'High', 'Metal', 'Perfect']
   },

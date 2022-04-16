@@ -7,9 +7,9 @@ function newGundam(req, res) {
 }
 // Post
 function create(req, res) {
-  console.log(req)
-  GundamModel.create(req.body);
-  res.redirect('/gundam/index')
+  GundamModel.create(req.body,function(err){
+    res.redirect('/gundam')
+  });
 }
 
 //Get
@@ -35,7 +35,7 @@ function update(req, res) {
         console.log(err)
       }
       else {
-        res.redirect('/gundam/index')
+        res.redirect('/gundam')
       }
     })
 }
